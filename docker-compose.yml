@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    drf:
+        build: .
+        #command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/code:rw
+        ports:
+            - "8000:8000"
+        command: python manage.py runserver 0.0.0.0:8000
+        #command: node ./assets/js/index.js
