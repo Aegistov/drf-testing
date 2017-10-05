@@ -35,11 +35,17 @@ ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 RUN node -v
 RUN npm -v
 
-COPY . ./code/
-WORKDIR /code
-
 RUN npm install webpack -g
-RUN npm install
+
+WORKDIR /tmp
+COPY package.json /tmp/
+RUN npm config set registry http://registry.npmjs.org/ && npm install
+
+COPY . /code/
+WORKDIR /code
+RUN cp -a /tmp/node_modules .
+# RUN npm install webpack -g
+# RUN npm install
 RUN pip install -r requirements.txt
 RUN webpack
 

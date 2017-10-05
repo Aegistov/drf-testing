@@ -12,7 +12,7 @@ module.exports = {
     
     output: {
         //where you want your compiled bundle to be stored
-		path: './assets/bundles/', 
+		path: path.resolve('./assets/bundles/'), 
         //naming convention webpack should use for your files
         filename: 'fu-[hash].js', 
         // filename: '[name]-[hash].js', 
@@ -87,6 +87,6 @@ module.exports = {
         //tells webpack where to look for modules
         modules: ['node_modules'],
         //extensions that should be used to resolve modules
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     }   
 };
